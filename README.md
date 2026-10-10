@@ -36,4 +36,3 @@ Developers can start with [the developer tutorials](https://www.odoo.com/documen
 If you believe you have found a security issue, check our [Responsible Disclosure page](https://www.odoo.com/security-report)
 for details and get in touch with us via email.
 # odoo-19.0_community
-# odoo-19.0_c
