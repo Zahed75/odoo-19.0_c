@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+<!--  Level-1 App Drawer  -->
+
+    <menuitem id="menu_myfirst_root"
+              name="My First App"
+              sequence="10"
+    />
+
+    <menuitem id="menu_myfirst_app_main"
+              name="My Data"
+              parent="menu_myfirst_root"
+              sequence="10"
+    />
+
+    <menuitem id="my_first_model"
+              name="My First Model"
+              parent="menu_myfirst_app_main"
+              action="action_myfirst_model"
+              sequence="10"
+    />
+
+
+
+</odoo>

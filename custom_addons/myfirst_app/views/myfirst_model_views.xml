@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <!-- ============ List VIEW========= -->
+
+    <record id="myfirst_model_view_list" model="ir.ui.view">
+        <field name="name">myfirst.model.list</field>
+        <field name="model">myfirst.model</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="an_int"/>
+                <field name="a_boolean"/>
+                <field name="a_date"/>
+                <field name="a_datetime"/>
+                <field name="a_selection" />
+                <field name="a_binary" />
+                <field name="a_html" />
+                <field name="an_image"/>
+
+            </list>
+        </field>
+
+    </record>
+
+
+</odoo>
