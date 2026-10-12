@@ -81,7 +81,7 @@ def load_addons_commands(command=None):
         for fullpath in Path(path).glob(f'*/cli/{command}.py'):
             if (found_command := fullpath.stem) and Command.is_valid_name(found_command):
                 # loading as odoo.cli and not odoo.addons.{module}.cli
-                # so it doesn't load odoo.addons.{module}.__init__
+                # so it doesn't load odoo.addons.{module}.__init__.py
                 mapping[f'odoo.cli.{found_command}'] = fullpath 
 
     for fq_name, fullpath in mapping.items():

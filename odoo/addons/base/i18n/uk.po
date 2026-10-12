@@ -27025,7 +27025,7 @@ msgstr "Підрахунок помилок"
 
 #. module: base
 #: model:ir.module.module,description:base.module_test_data_module
-msgid "Fake module to test data module installation without __init__.py"
+msgid "Fake module to test data module installation without __init__.py.py"
 msgstr ""
 "Фейковий модуль для перевірки встановлення модуля даних без нього__init__.py"
 

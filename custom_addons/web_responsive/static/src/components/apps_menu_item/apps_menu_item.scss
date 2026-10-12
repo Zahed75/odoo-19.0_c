@@ -1,0 +1,71 @@
+/* Copyright 2018 Tecnativa - Jairo Llopis
+ * Copyright 2021 ITerra - Sergey Shebanin
+ * Copyright 2023 Taras Shabaranskyi
+ * License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). */
+
+.o-app-menu-item {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    gap: 0.5rem;
+    transition: ease box-shadow, transform, 0.3s;
+    background: unset;
+    outline: unset;
+    border: unset;
+    padding: 0.75rem 0.5rem;
+    justify-content: flex-start;
+    align-items: center;
+    white-space: normal;
+    user-select: none;
+    height: -moz-available;
+    height: max-content;
+    text-decoration: none;
+    color: inherit;
+
+    &__name {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: 0.875rem;
+        text-shadow: var(--app-menu-text-shadow);
+        color: var(--app-menu-text-color);
+        text-align: center;
+        line-height: 1.3;
+    }
+
+    &__icon {
+        height: 64px;
+        width: 64px;
+        aspect-ratio: 1;
+        padding: 10px;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    &__active {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        text-shadow: 0 0 2px rgba(250, 250, 250, 0.6);
+        color: var(--app-menu-text-color);
+        font-size: 1rem;
+    }
+
+    &:focus,
+    &:hover {
+        transform: translateY(-4px);
+        background-color: var(--app-menu-hover-background) !important;
+        backdrop-filter: blur(2px);
+
+        .o-app-menu-item__icon {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    }
+
+    &:active {
+        transform: translateY(-2px);
+    }
+}

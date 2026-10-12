@@ -1,0 +1,152 @@
+/* Copyright 2018 Tecnativa - Jairo Llopis
+ * Copyright 2021 ITerra - Sergey Shebanin
+ * Copyright 2023 Taras Shabaranskyi
+ * License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). */
+
+// Define CSS variables on body when apps menu is open so they're available to navbar and app menu
+body.o_apps_menu_opened[data-app-menu-theme="milk"] {
+    --app-menu-background:
+        url("../../img/home-menu-bg-overlay.svg"),
+        linear-gradient(
+            to bottom,
+            #{$app-menu-background-color},
+            #{desaturate(lighten($app-menu-background-color, 20%), 15)}
+        );
+    --app-menu-text-color: #{$app-menu-text-color};
+    --app-menu-text-shadow: 1px 1px 1px #{rgba($white, 0.4)};
+    --app-menu-hover-background: #{rgba(white, 0.4)};
+}
+
+body.o_apps_menu_opened[data-app-menu-theme="community"] {
+    --app-menu-background:
+        url("../../img/home-menu-bg-overlay.svg"),
+        linear-gradient(
+            to bottom,
+            #{$o-brand-primary},
+            #{desaturate(lighten($o-brand-primary, 20%), 15)}
+        );
+    --app-menu-text-color: white;
+    --app-menu-text-shadow: 1px 1px 1px #{rgba(black, 0.4)};
+    --app-menu-hover-background: #{rgba(white, 0.2)};
+}
+
+// Also define on the grid menu element for when it's used outside the apps menu context
+.o_grid_apps_menu[data-theme="milk"] {
+    --app-menu-background:
+        url("../../img/home-menu-bg-overlay.svg"),
+        linear-gradient(
+            to bottom,
+            #{$app-menu-background-color},
+            #{desaturate(lighten($app-menu-background-color, 20%), 15)}
+        );
+    --app-menu-text-color: #{$app-menu-text-color};
+    --app-menu-text-shadow: 1px 1px 1px #{rgba($white, 0.4)};
+    --app-menu-hover-background: #{rgba(white, 0.4)};
+}
+
+.o_grid_apps_menu[data-theme="community"] {
+    --app-menu-background:
+        url("../../img/home-menu-bg-overlay.svg"),
+        linear-gradient(
+            to bottom,
+            #{$o-brand-primary},
+            #{desaturate(lighten($o-brand-primary, 20%), 15)}
+        );
+    --app-menu-text-color: white;
+    --app-menu-text-shadow: 1px 1px 1px #{rgba(black, 0.4)};
+    --app-menu-hover-background: #{rgba(white, 0.2)};
+}
+
+@mixin full-screen-dropdown {
+    border: none;
+    box-shadow: none;
+    height: 100%;
+    max-height: calc(var(--vh100, 100vh) - #{$o-navbar-height});
+    max-height: calc(100dvh - #{$o-navbar-height});
+    position: fixed;
+    margin: 0;
+    width: 100vw;
+    z-index: 1000;
+    left: 0 !important;
+}
+
+.o_apps_menu_opened .o_main_navbar {
+    .o_menu_brand,
+    .o_menu_sections {
+        display: none !important;
+    }
+}
+
+// When apps menu is open, give navbar the same background as the app menu container
+.o_apps_menu_opened .o_main_navbar {
+    background: var(--app-menu-background);
+    background-size: cover;
+    border-bottom: none;
+    --NavBar-entry-color: var(--app-menu-text-color);
+    --NavBar-entry-color--hover: var(--app-menu-text-color);
+    --NavBar-brand-color: var(--app-menu-text-color);
+}
+
+// hide and save odoo default QUnit tests
+.o_navbar_apps_menu.hide .dropdown-toggle {
+    position: absolute !important;
+    z-index: -100 !important;
+}
+
+// Iconized full screen apps menu
+.o_grid_apps_menu {
+    &__button {
+        background: unset;
+        border: unset;
+        outline: unset;
+        margin-right: 0.25rem;
+        min-height: $o-navbar-height;
+        height: $o-navbar-height;
+        width: $o-navbar-height;
+        color: $o-navbar-brand-color;
+
+        &:hover,
+        &:focus {
+            background: $o-navbar-entry-bg--hover;
+        }
+    }
+}
+
+// Enterprise-style centered app menu container - minimal top padding like Enterprise
+.app-menu-container {
+    @include full-screen-dropdown();
+    overflow: auto;
+    background-clip: border-box;
+    background: var(--app-menu-background);
+    background-size: cover;
+    border-radius: 0;
+    z-index: 1024 !important;
+    padding: 0.5rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include media-breakpoint-up(lg) {
+        padding: 1rem 2rem 2rem;
+    }
+}
+
+// App grid - centered like Enterprise
+.o-app-menu-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    width: 100%;
+    max-width: 900px;
+    gap: 0.5rem;
+    justify-content: center;
+    padding: 0 1rem;
+
+    @include media-breakpoint-up(sm) {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    }
+}
+
+// Sidebar positioning
+.o_app_menu_sidebar {
+    transform: translateX(-100%);
+}

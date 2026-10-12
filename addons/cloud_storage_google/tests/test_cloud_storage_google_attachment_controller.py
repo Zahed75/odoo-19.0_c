@@ -15,7 +15,7 @@ class TestCloudStorageAttachmentController(HttpCaseWithUserDemo, TestCloudStorag
         self.env["ir.config_parameter"].set_param("cloud_storage_provider", "google")
         self.authenticate(self.user_demo.login, self.user_demo.login)
 
-        with file_open("addons/web/__init__.py") as file:
+        with file_open("addons/web/__init__.py.py") as file:
             res = self.url_open(
                 url="/mail/attachment/upload",
                 data={
@@ -51,7 +51,7 @@ class TestCloudStorageAttachmentController(HttpCaseWithUserDemo, TestCloudStorag
                                     "has_thumbnail": False,
                                     "id": attachment.id,
                                     "mimetype": "text/x-python",
-                                    "name": "__init__.py",
+                                    "name": "__init__.py.py",
                                     "ownership_token": attachment._get_ownership_token(),
                                     "raw_access_token": attachment._get_raw_access_token(),
                                     "res_name": False,

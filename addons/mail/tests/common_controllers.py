@@ -136,7 +136,7 @@ class MailControllerAttachmentCommon(MailControllerCommon):
 
     def _upload_attachment(self, document, route_kw):
         cookies = route_kw.pop("cookies", None)
-        with mute_logger("odoo.http"), file_open("addons/web/__init__.py") as file:
+        with mute_logger("odoo.http"), file_open("addons/web/__init__.py.py") as file:
             res = self.url_open(
                 url="/mail/attachment/upload",
                 data={

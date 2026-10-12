@@ -242,7 +242,7 @@ class Domain:
 
         # parse as a list
         # perf: do this inside __new__ to avoid calling function that return
-        # a Domain which would call implicitly __init__
+        # a Domain which would call implicitly __init__.py
         if not isinstance(arg, (list, tuple)):
             raise TypeError(f"Domain() invalid argument type for domain: {arg!r}")
         stack: list[Domain] = []

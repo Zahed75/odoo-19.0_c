@@ -12,7 +12,7 @@ def upgrade(file_manager):
         file for file in file_manager
         if 'models' in file.path.parts
         if file.path.suffix == '.py'
-        if file.path.name != '__init__.py'
+        if file.path.name != '__init__.py.py'
     ]
 
     # Early return if case there are no file, so we don't compile

@@ -28927,8 +28927,8 @@ msgstr "Jumlah Gagal"
 
 #. module: base
 #: model:ir.module.module,description:base.module_test_data_module
-msgid "Fake module to test data module installation without __init__.py"
-msgstr "Modul palsu untuk mengetes penginstalan modul data tanpa __init__.py"
+msgid "Fake module to test data module installation without __init__.py.py"
+msgstr "Modul palsu untuk mengetes penginstalan modul data tanpa __init__.py.py"
 
 #. module: base
 #: model:res.country,name:base.fk

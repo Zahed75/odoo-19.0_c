@@ -29922,9 +29922,9 @@ msgstr "Xatoliklar soni"
 #. module: base
 #: model:ir.module.module,description:base.module_test_data_module
 #, fuzzy
-msgid "Fake module to test data module installation without __init__.py"
+msgid "Fake module to test data module installation without __init__.py.py"
 msgstr ""
-"__init__.py fayli bo‘lmagan holda ma'lumotlar modulini o‘rnatishni sinab "
+"__init__.py.py fayli bo‘lmagan holda ma'lumotlar modulini o‘rnatishni sinab "
 "ko‘rish uchun soxta modul"
 
 #. module: base

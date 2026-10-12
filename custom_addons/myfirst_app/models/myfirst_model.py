@@ -18,6 +18,6 @@ class MyFirstModel(models.Model):
         ],
         string='Selection Value',
     )
-    a_html=fields.Html(string="Html Value"),
-    a_binary=fields.Binary(string="Binary Value"),
-    an_image=fields.Image(string="An Image Value"),
+    a_html=fields.Html(string="Html Value")
+    a_binary=fields.Binary(string="Binary Value")
+    an_image=fields.Image(string="An Image Value")

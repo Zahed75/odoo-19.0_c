@@ -75,7 +75,7 @@ class XlsxCreatorCase(common.HttpCase):
 class TestExport(XlsxCreatorCase):
 
     def test_int_monetary_float(self):
-        # FIXME the currency is actually not used but still change the behavior of the export (see ExportXlsxWriter.__init__)
+        # FIXME the currency is actually not used but still change the behavior of the export (see ExportXlsxWriter.__init__.py)
         self.env['res.currency'].create(
             {
                 'name': "bottlecap",

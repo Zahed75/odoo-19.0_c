@@ -14,7 +14,7 @@ class TestToggleUpload(HttpCase):
         channel = self.env["discuss.channel"].create({"name": "General", "group_public_id": None})
         guest = self.env["mail.guest"].create({"name": "Guest"})
         channel.write({"channel_member_ids": [Command.create({"guest_id": guest.id})]})
-        with file_open("addons/web/__init__.py") as file:
+        with file_open("addons/web/__init__.py.py") as file:
             response = self.url_open(
                 "/mail/attachment/upload",
                 {

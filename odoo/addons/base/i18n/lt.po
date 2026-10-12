@@ -22840,7 +22840,7 @@ msgstr "Gedimų skaičius"
 
 #. module: base
 #: model:ir.module.module,description:base.module_test_data_module
-msgid "Fake module to test data module installation without __init__.py"
+msgid "Fake module to test data module installation without __init__.py.py"
 msgstr ""
 
 #. module: base

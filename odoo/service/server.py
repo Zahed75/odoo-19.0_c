@@ -364,7 +364,7 @@ class FSWatcherInotify(FSWatcherBase):
         self.started = False
         # ignore warnings from inotify in case we have duplicate addons paths.
         inotify.adapters._LOGGER.setLevel(logging.ERROR)
-        # recreate a list as InotifyTrees' __init__ deletes the list's items
+        # recreate a list as InotifyTrees' __init__.py deletes the list's items
         paths_to_watch = []
         import odoo.addons  # noqa: PLC0415
         for path in odoo.addons.__path__:

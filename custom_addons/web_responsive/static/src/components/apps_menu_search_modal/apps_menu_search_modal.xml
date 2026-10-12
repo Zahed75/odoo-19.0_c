@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <!-- Enterprise-style Search Modal Overlay -->
+    <t t-name="web_responsive.AppsMenuSearchModal">
+        <div class="o_app_search_modal" t-on-click="onBackdropClick">
+            <div class="o_app_search_modal__content" t-on-click.stop="">
+                <!-- Search Input -->
+                <div class="o_app_search_modal__search">
+                    <span class="o_app_search_modal__slash">/</span>
+                    <input
+                        type="text"
+                        t-ref="searchInput"
+                        t-on-input="onSearchInput"
+                        t-on-keydown="onKeyDown"
+                        autocomplete="off"
+                        placeholder="Search for a menu..."
+                        class="o_app_search_modal__input"
+                    />
+                    <i class="oi oi-search o_app_search_modal__search_icon" />
+                </div>
+
+                <!-- Search Results -->
+                <div t-if="state.hasQuery" class="o_app_search_modal__results">
+                    <!-- Apps Section -->
+                    <t t-if="state.apps.length">
+                        <div class="o_app_search_modal__section">
+                            <span class="o_app_search_modal__section_title">Apps</span>
+                        </div>
+                        <t t-foreach="state.apps" t-as="app" t-key="app.id">
+                            <div
+                                t-att-class="getItemClass(app_index, 'app')"
+                                t-att-data-index="app_index"
+                                t-on-click="onItemClick"
+                                t-on-mouseenter="onItemMouseEnter"
+                            >
+                                <div class="o_app_search_modal__item_icon">
+                                    <img
+                                        t-if="app.webIconData"
+                                        t-att-src="app.webIconData"
+                                        alt=""
+                                    />
+                                    <div
+                                        t-elif="app.webIconObject"
+                                        t-attf-style="background-color:{{app.webIconObject.backgroundColor}}"
+                                    >
+                                        <i t-att-class="app.webIconObject.iconClass" t-attf-style="color:{{app.webIconObject.color}}" />
+                                    </div>
+                                    <div t-else="" class="o_app_search_modal__item_icon_fallback">
+                                        <i class="fa fa-th-large" />
+                                    </div>
+                                </div>
+                                <span class="o_app_search_modal__item_name">
+                                    <t t-out="app.name" />
+                                </span>
+                                <span t-if="app.actionPath" class="o_app_search_modal__item_shortcut">
+                                    <kbd>CMD</kbd> + <kbd>↵</kbd> <span>new tab</span>
+                                </span>
+                            </div>
+                        </t>
+                    </t>
+
+                    <!-- Menu Items Section -->
+                    <t t-if="state.menuItems.length">
+                        <div class="o_app_search_modal__section">
+                            <span class="o_app_search_modal__section_title">Menu Items</span>
+                        </div>
+                        <t t-foreach="state.menuItems" t-as="item" t-key="item.id">
+                            <div
+                                t-att-class="getItemClass(state.apps.length + item_index, 'menu')"
+                                t-att-data-index="state.apps.length + item_index"
+                                t-on-click="onItemClick"
+                                t-on-mouseenter="onItemMouseEnter"
+                            >
+                                <span class="o_app_search_modal__item_name" t-out="item.displayName" />
+                            </div>
+                        </t>
+                    </t>
+
+                    <!-- Empty State -->
+                    <t t-if="!state.apps.length and !state.menuItems.length">
+                        <div class="o_app_search_modal__empty">
+                            <span>No menu found</span>
+                        </div>
+                    </t>
+                </div>
+
+                <!-- Footer Tip -->
+                <div t-if="state.hasQuery" class="o_app_search_modal__footer">
+                    <span>TIP — open me anywhere with <strong>COMMAND + K</strong></span>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

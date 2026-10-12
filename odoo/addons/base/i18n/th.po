@@ -27265,8 +27265,8 @@ msgstr "จำนวนไฟล์แนบ"
 
 #. module: base
 #: model:ir.module.module,description:base.module_test_data_module
-msgid "Fake module to test data module installation without __init__.py"
-msgstr "โมดูลจำลองเพื่อทดสอบการติดตั้งโมดูลข้อมูลโดยไม่มี __init__.py"
+msgid "Fake module to test data module installation without __init__.py.py"
+msgstr "โมดูลจำลองเพื่อทดสอบการติดตั้งโมดูลข้อมูลโดยไม่มี __init__.py.py"
 
 #. module: base
 #: model:res.country,name:base.fk

@@ -1,0 +1,66 @@
+/* Copyright 2018 Tecnativa - Jairo Llopis
+ * Copyright 2021 ITerra - Sergey Shebanin
+ * Copyright 2023 Taras Shabaranskyi
+ * License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). */
+
+.o_grid_apps_menu .search-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+
+    .search-input {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background-color: white;
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+        border: 1px solid #e5e7eb;
+        transition: box-shadow 0.2s ease;
+
+        &:focus-within {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .search-slash {
+            color: #9ca3af;
+            font-size: 1.25rem;
+            font-weight: 300;
+            user-select: none;
+        }
+
+        .form-control {
+            flex: 1;
+            height: auto;
+            background: none;
+            border: none;
+            color: #374151;
+            display: block;
+            padding: 0;
+            box-shadow: none;
+            font-size: 1rem;
+
+            &::placeholder {
+                color: #9ca3af;
+                opacity: 0.8;
+            }
+
+            &:focus {
+                outline: none;
+                box-shadow: none;
+            }
+        }
+
+        .search-icon {
+            color: #9ca3af;
+            font-size: 1.1rem;
+        }
+    }
+}
+
+.o_command_palette_search .form-control {
+    &:focus {
+        box-shadow: unset;
+    }
+}

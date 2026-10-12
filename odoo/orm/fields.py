@@ -258,7 +258,7 @@ class Field(typing.Generic[T]):
     # Company-dependent fields are stored as jsonb (see column_type).
     _column_type: tuple[str, str] | None = None
 
-    _args__: dict[str, typing.Any] | None = None  # the parameters given to __init__()
+    _args__: dict[str, typing.Any] | None = None  # the parameters given to __init__.py()
     _module: str | None = None          # the field's module name
     _modules: tuple[str, ...] = ()      # modules that define this field
     _setup_done = True                  # whether the field is completely set up

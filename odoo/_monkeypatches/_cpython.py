@@ -113,7 +113,7 @@ def _patch_attribute_error():
 
         # keep original setter/deleter
         # PyCharm's pydev debugger relies on normal AttributeError handling in
-        # its Cython frame-eval code, so overriding __init__ / write behavior
+        # its Cython frame-eval code, so overriding __init__.py / write behavior
         # can recurse and crash the debugger with stack overflow
         # https://github.com/JetBrains/intellij-community/blob/7bc44574a8fe3a1e44425683188bd842c805fe1e/python/helpers/pydev/_pydevd_frame_eval/pydevd_frame_evaluator_39_310.pyx#L261-L266
         __set__ = origin_obj_member.__set__

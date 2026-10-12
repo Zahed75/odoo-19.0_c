@@ -266,7 +266,7 @@ class TestAddonsFileAccess(BaseCase):
         self.assertEqual(__file__, file_path(relpath, filter_ext=('.py',)))
 
         # leading 'addons/' is ignored if present
-        self.assertTrue(file_path("addons/web/__init__.py"))
+        self.assertTrue(file_path("addons/web/__init__.py.py"))
         relpath = os.path.join('addons', relpath) # 'addons/base/tests/test_misc.py'
         self.assertEqual(__file__, file_path(relpath))
 
@@ -313,7 +313,7 @@ class TestAddonsFileAccess(BaseCase):
         self.assertCanRead(relpath, test_needle.encode(), mode='rb', filter_ext=('.py',))
 
         # leading 'addons/' is ignored if present
-        self.assertCanRead("addons/web/__init__.py", "import")
+        self.assertCanRead("addons/web/__init__.py.py", "import")
         relpath = os.path.join('addons', relpath) # 'addons/base/tests/test_misc.py'
         self.assertCanRead(relpath, test_needle)
 

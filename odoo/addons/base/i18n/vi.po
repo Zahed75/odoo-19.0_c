@@ -29073,9 +29073,9 @@ msgstr "Đếm số lần không thành công"
 
 #. module: base
 #: model:ir.module.module,description:base.module_test_data_module
-msgid "Fake module to test data module installation without __init__.py"
+msgid "Fake module to test data module installation without __init__.py.py"
 msgstr ""
-"Phân hệ giả để kiểm tra cài đặt phân hệ dữ liệu mà không cần __init__.py"
+"Phân hệ giả để kiểm tra cài đặt phân hệ dữ liệu mà không cần __init__.py.py"
 
 #. module: base
 #: model:res.country,name:base.fk
