@@ -11,12 +11,15 @@
         'base'
     ],
     'data': [
-
+        'security/ir.model.access.csv',
+        'views/university_students_views.xml',
+        'views/university_education_actions.xml',
+        'views/university_education_menu.xml'
     ],
-    'icon':'',
+    'icon': 'university_managment/static/description/icon.png',
     'installable': True,
     'application': True,
-    'license':'LGPL-3',
-    # 'sequence': ''
+    'license': 'LGPL-3',
+    'sequence': -1
 
 }
