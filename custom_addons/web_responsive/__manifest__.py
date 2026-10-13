@@ -1,9 +1,4 @@
-# Copyright 2016-2017 LasLabs Inc.
-# Copyright 2017-2018 Tecnativa - Jairo Llopis
-# Copyright 2018-2019 Tecnativa - Alexandre Díaz
-# Copyright 2021 ITerra - Sergey Shebanin
-# Copyright 2023 Onestein - Anjeel Haria
-# Copyright 2023 Taras Shabaranskyi
+# Copyright 2016-2017 vexanext
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 {
@@ -11,8 +6,8 @@
     "summary": "Responsive web client, community-supported",
     "version": "19.0.1.0.2",
     "category": "Website",
-    "website": "https://github.com/OCA/web",
-    "author": "LasLabs, Tecnativa, ITerra, Onestein, Odoo Community Association (OCA)",
+    "website": "https://thezhasan.com/",
+    "author": "LasLabs, Tecnativa, ITerra, Onestein, Odoo Community Association (OCA), Zahed Hasan - Engineering Manager at Syscomatic LLC",
     "license": "LGPL-3",
     "installable": True,
     "depends": ["web", "web_tour", "mail"],

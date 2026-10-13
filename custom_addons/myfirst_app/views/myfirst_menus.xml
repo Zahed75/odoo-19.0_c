@@ -6,6 +6,7 @@
     <menuitem id="menu_myfirst_root"
               name="My First App"
               sequence="10"
+              web_icon="myfirst_app,static/description/icon.png"
     />
 
     <menuitem id="menu_myfirst_app_main"

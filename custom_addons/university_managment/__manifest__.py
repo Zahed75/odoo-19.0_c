@@ -5,8 +5,8 @@
     'category': 'University',
     'summary': 'University Managment',
     'description': """ This is University Education Management """,
-    'author': 'SDTEK',
-    'website': '',
+    'author': 'Zahed Hasan - Engineering Manager at Syscomatic LLC',
+    'website': 'https://thezhasan.com/',
     'depends': [
         'base'
     ],
