@@ -8,6 +8,10 @@
     "depends": ["base", "mail"],
     # ORDER MATTERS: a file can only reference records loaded before it.
     "data": [
+        "security/library_security.xml",
+        "security/ir.model.access.csv",
+        "views/library_tag_views.xml",
+        "views/library_menus.xml",
 
     ],
     "demo": [
