@@ -30,13 +30,8 @@
               parent="library_menu_catalog" action="action_coming_soon_url" sequence="10"/>
 
 
-    <!--    <menuitem id="library_menu_authors" name="Authors" parent="library_menu_catalog" action="library_author_aciton"-->
-    <!--              sequence="20"/>-->
-
-
-
     <menuitem id="library_menu_authors" name="Authors"
-              parent="library_menu_catalog" action="action_coming_soon_url" sequence="20"/>
+              parent="library_menu_catalog" action="library_author_action" sequence="20"/>
 
 
     <menuitem id="library_menu_loans" name="Loans"

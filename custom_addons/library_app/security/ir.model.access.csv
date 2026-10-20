@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_tag_user,library.tag user,model_library_tag,group_library_user,1,0,0,0
 access_tag_manager,library.tag manager,model_library_tag,group_library_manager,1,1,1,1
+access_author_user,library.author user,model_library_author,group_library_user,1,0,0,0
+access_author_manager,library.author manager,model_library_author,group_library_manager,1,1,1,1

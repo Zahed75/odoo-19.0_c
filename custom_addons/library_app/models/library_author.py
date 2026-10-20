@@ -18,6 +18,7 @@ class LibraryAuthor(models.Model):
         for author in self:
             author.book_count = len(author.book_ids)
 
+
     def action_view_books(self):
         self.ensure_one()
         return {

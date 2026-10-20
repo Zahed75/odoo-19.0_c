@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="library_author_view_list" model="ir.ui.view">
+        <field name="name">library.author.list</field>
+        <field name="model">library.author</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="country_id"/>
+                <field name="birth_date"/>
+                <field name="book_count"/>
+            </list>
+        </field>
+
+    </record>
+
+    <!--    Form View   -->
+
+    <record id="library_author_view_form" model="ir.ui.view">
+        <field name="name">library.author.form</field>
+        <field name="model">library.author</field>
+        <field name="arch" type="xml">
+            <form string="Author">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_books" type="object" class="oe_stat_button" icon="fa-book">
+                            <field name="book_count" widget="statinfo" string="Books"/>
+                        </button>
+
+                    </div>
+
+                    <div class="or_title">
+                        <h1>
+                            <field name="name" placeholder="Author Name"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <field name="country_id"/>
+                        <field name="birth_date"/>
+                    </group>
+                    <field name="biography" placeholder="Short biography..........."/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="library_author_action" model="ir.actions.act_window">
+        <field name="name" >Authors</field>
+        <field name="res_model" >library.author</field>
+        <field name="view_mode" >list,form</field>
+        <field name="path">library-authors</field>
+    </record>
+
+</odoo>
