@@ -31,6 +31,28 @@ To learn the software, we recommend the [Odoo eLearning](https://www.odoo.com/sl
 or [Scale-up, the business game](https://www.odoo.com/page/scale-up-business-game).
 Developers can start with [the developer tutorials](https://www.odoo.com/documentation/master/developer/howtos.html).
 
+## Development with Docker
+
+Start Odoo and PostgreSQL from the repository root:
+
+```sh
+docker compose up --build
+```
+
+Open [http://localhost:8069](http://localhost:8069) and create a database. The
+database manager's master password is `admin`; the PostgreSQL development
+credentials are `odoo` / `odoo`. The Odoo source and `custom_addons` directory
+are mounted into the container, and `--dev=all` enables development mode.
+PostgreSQL data and Odoo files persist in Docker volumes.
+
+Open [http://localhost:5050](http://localhost:5050) for pgAdmin and sign in
+with `admin@admin.com` / `admin`. To register the Compose database, use host
+`db`, port `5432`, username `odoo`, and password `odoo`. pgAdmin settings
+persist in a Docker volume.
+
+Stop the services with `docker compose down`. To also remove the development
+database, Odoo files, and pgAdmin settings, run `docker compose down --volumes`.
+
 ## Security
 
 If you believe you have found a security issue, check our [Responsible Disclosure page](https://www.odoo.com/security-report)

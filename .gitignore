@@ -51,3 +51,7 @@ package.json
 /man/
 /share/
 /src/
+Dockerfile
+compose.yml
+odoo.conf
+README.md
