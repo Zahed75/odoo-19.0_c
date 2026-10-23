@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    <!--  List View  -->
+
+
+    <record id="library_book_view_list" model="ir.ui.view">
+        <field name="name">library.book.list</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <list string="Books" decoration-muted="state == 'lost'" decoration-danger="copies_available == 0">
+                <field name="name"/>
+                <field name="author_id"/>
+                <field name="category"/>
+                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="isbn" optional="hide"/>
+                <field name="price" optional="show"/>
+                <field name="currency_id"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="copies_available" sum="Available"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'available'"
+                       decoration-danger="state == 'lost'"/>
+
+            </list>
+        </field>
+
+    </record>
+
+
+    <!--   Form View  -->
+
+    <record id="library_book_form_view" model="ir.ui.view">
+        <field name="name">library.book.form</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <form string="Book">
+                <header>
+                    <button name="action_make_available" strin="Make Available" type="object" class="btn-primary"
+                            invisible="state !='draft'"/>
+
+                    <button name="action_mark_lost" strin="Mark As a Lost" type="object"
+                            invisible="state =='lost'" confirm="Are You Sure?"/>
+
+                    <field name="state" widget="statusbar" statusbar_visible="draft,available"/>
+
+                </header>
+
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_loans" type="object" class="oe_stat_button" icon="fa-exchange">
+                            <field name="loan_count" widget="statinfo" string="Loans"/>
+                        </button>
+                    </div>
+
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+
+                    <field name="cover" widget="image" class="oe_avatar"/>
+
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g Clean Code"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group string="General">
+                            <field name="author_id"/>
+                            <field name="isbn"/>
+                            <field name="category"/>
+                            <field name="tag_ids" widget="many2many_tags" optional="{'color_field':color}"/>
+                        </group>
+                    </group>
+
+                    <group string="Stock &amp; Price">
+                        <field name="copies_total"/>
+                        <field name="copies_available"/>
+                        <field name="price"/>
+                        <field name="currency_id"/>
+                        <field name="published_date"/>
+                        <field name="pages"/>
+                        <field name="active" invisible="1"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Description" name="description">
+                            <field name="description"/>
+                        </page>
+
+                        <page string="Loan History" name="loans">
+                            <field name="loan_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="member_id"/>
+                                    <field name="loan_date"/>
+                                    <field name="state"/>
+                                </list>
+
+                            </field>
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+                <chatter/>
+
+
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Kanban View   -->
+
+    <record id="library_book_view_kanban" model="ir.ui.view">
+        <field name="name">library.book.kanban</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="category">
+                <templates>
+                    <t t-name="card" class="flex-row">
+                        <aside>
+                            <field name="cover" widget="image" options="{'size': (64, 64)}"/>
+                        </aside>
+
+                        <main class="ms-2">
+                            <field name="name" class="fw-bold fs-5"/>
+                            <field name="author_id" class="text-muted"/>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                            <footer>
+                                <span>Available:
+                                    <field name="copies_available"/>
+                                </span>
+
+                                <field name="state" widget="label_selection" class="ms-auto"
+                                       options="{'classes': {'draft': 'default',
+                                                 'available': 'success', 'lost': 'danger'}}"/>
+
+                            </footer>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!--  Search View  -->
+
+
+    <!--    Pivot View-->
+
+
+    <!--    Graph View -->
+
+
+    <!--  Action View  -->
+
+
+    <record id="library_book_action" model="ir.actions.act_window">
+        <field name="name">Books</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="context">{'search_default_filter_availabe':1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Add your first book</p>
+            <p>Books You add here can be lent to library members</p>
+        </field>
+    </record>
+
+</odoo>

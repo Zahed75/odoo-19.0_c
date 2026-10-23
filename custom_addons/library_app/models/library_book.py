@@ -5,13 +5,13 @@ from odoo.exceptions import ValidationError
 class LibraryBook(models.Model):
     _name = "library.book"
     _description = "Library Book"
-    _inherit = ["mail.thread", "mail.activity.mixin"]   # chatter + activities
+    _inherit = ["mail.thread", "mail.activity.mixin"]  # chatter + activities
     _order = "name"
 
     # --- basic fields -------------------------------------------------
     name = fields.Char(string="Title", required=True, tracking=True)
     isbn = fields.Char(string="ISBN", copy=False)
-    active = fields.Boolean(default=True)               # enables Archive
+    active = fields.Boolean(default=True)  # enables Archive
     cover = fields.Image(max_width=512, max_height=512)
     description = fields.Html()
     published_date = fields.Date()
@@ -44,3 +44,37 @@ class LibraryBook(models.Model):
 
     # --- SQL constraint (Odoo 19 syntax) --------------------------------
     _isbn_uniq = models.Constraint("UNIQUE(isbn)", "ISBN must be unique!")
+
+    @api.depends("copies_total", "loan_ids.state")
+    def _compute_copies_available(self):
+        for book in self:
+            out = book.loan_ids.filtered(lambda l: l.state in ("borrowed", "late"))
+            book.copies_available = book.copies_total - len(out)
+
+    def _compute_loan_count(self):
+        for book in self:
+            book.loan_count = len(book.loan_ids)
+
+    @api.constrains("copies_total")
+    def _check_copies_total(self):
+        for book in self:
+            if book.copies_total < 0:
+                raise ValidationError("Total copies cannot be negative.")
+
+    # --- buttons -------------------------------------------------------
+    def action_make_available(self):
+        self.write({"state": "available"})
+
+    def action_mark_lost(self):
+        self.write({"state": "lost"})
+
+    def action_view_loans(self):
+        self.ensure_one()
+        return {
+            "type": "ir.actions.act_window",
+            "name": "Loans",
+            "res_model": "library.loan",
+            "view_mode": "list,form",
+            "domain": [("book_id", "=", self.id)],
+            "context": {"default_book_id": self.id},
+        }

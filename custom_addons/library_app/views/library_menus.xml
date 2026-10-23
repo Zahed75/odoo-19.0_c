@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!--    Placeholder actions -->
+    <!-- Placeholder action: এখনো না-বানানো স্ক্রিনের জন্য, ক্লিকে Tags-এ যায় -->
     <record id="action_coming_soon_url" model="ir.actions.act_url">
         <field name="name">Coming Soon</field>
         <field name="url">/odoo/library-tags</field>
         <field name="target">self</field>
     </record>
 
-
+    <!-- ============ LEVEL 1: app tile ============ -->
     <menuitem id="library_menu_root" name="Library"
               web_icon="libro,static/description/icon.png"
-              sequence="10"/>
+              groups="group_library_user" sequence="10"/>
 
-
+    <!-- ============ LEVEL 2: top bar (sequence production-এর মতোই) ============ -->
     <menuitem id="library_menu_dashboard" name="Dashboard"
               parent="library_menu_root" action="action_coming_soon_url" sequence="1"/>
     <menuitem id="library_menu_catalog" name="Catalog"
@@ -21,25 +21,28 @@
               parent="library_menu_root" sequence="20"/>
     <menuitem id="library_menu_reporting" name="Reporting"
               parent="library_menu_root" sequence="80"/>
+    <menuitem id="library_menu_config" name="Configuration"
+              parent="library_menu_root" sequence="100"
+              groups="group_library_manager"/>
 
-
-    <!-- Level 3 -->
-    <menuitem id="library_menu_tags" name="Tags"
-              parent="library_menu_catalog" action="library_tag_action" sequence="5"/>
+    <!-- ============ LEVEL 3 ============ -->
+    <!-- Catalog -->
     <menuitem id="library_menu_books" name="Books"
-              parent="library_menu_catalog" action="action_coming_soon_url" sequence="10"/>
-
-
+              parent="library_menu_catalog" action="library_book_action" sequence="10"/>
     <menuitem id="library_menu_authors" name="Authors"
               parent="library_menu_catalog" action="library_author_action" sequence="20"/>
 
-
+    <!-- Circulation -->
     <menuitem id="library_menu_loans" name="Loans"
               parent="library_menu_circulation" action="action_coming_soon_url" sequence="10"/>
     <menuitem id="library_menu_members" name="Members"
               parent="library_menu_circulation" action="action_coming_soon_url" sequence="20"/>
 
+    <!-- Reporting -->
     <menuitem id="library_menu_loan_analysis" name="Loan Analysis"
               parent="library_menu_reporting" action="action_coming_soon_url" sequence="10"/>
 
+    <!-- Configuration (শুধু manager দেখবে) -->
+    <menuitem id="library_menu_tags" name="Tags"
+              parent="library_menu_config" action="library_tag_action"/>
 </odoo>

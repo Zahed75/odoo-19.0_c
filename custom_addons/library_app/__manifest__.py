@@ -12,9 +12,8 @@
         "security/ir.model.access.csv",
         "views/library_tag_views.xml",
         "views/library_author_views.xml",
-
+        "views/library_books_views.xml",
         "views/library_menus.xml",
-
     ],
     "demo": [
         # "demo/library_demo.xml",
