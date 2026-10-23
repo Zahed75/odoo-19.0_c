@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+
+    <!-- Tags -->
+    <record id="tag_classic" model="library.tag">
+        <field name="name">Classic</field>
+        <field name="color">1</field>
+    </record>
+    <record id="tag_bestseller" model="library.tag">
+        <field name="name">Bestseller</field>
+        <field name="color">3</field>
+    </record>
+    <record id="tag_programming" model="library.tag">
+        <field name="name">Programming</field>
+        <field name="color">10</field>
+    </record>
+
+    <!-- Authors -->
+    <record id="author_orwell" model="library.author">
+        <field name="name">George Orwell</field>
+        <field name="country_id" ref="base.uk"/>
+        <field name="birth_date">1903-06-25</field>
+    </record>
+    <record id="author_austen" model="library.author">
+        <field name="name">Jane Austen</field>
+        <field name="country_id" ref="base.uk"/>
+        <field name="birth_date">1775-12-16</field>
+    </record>
+    <record id="author_hawking" model="library.author">
+        <field name="name">Stephen Hawking</field>
+        <field name="country_id" ref="base.uk"/>
+        <field name="birth_date">1942-01-08</field>
+    </record>
+    <record id="author_harari" model="library.author">
+        <field name="name">Yuval Noah Harari</field>
+        <field name="country_id" ref="base.il"/>
+        <field name="birth_date">1976-02-24</field>
+    </record>
+    <record id="author_martin" model="library.author">
+        <field name="name">Robert C. Martin</field>
+        <field name="country_id" ref="base.us"/>
+        <field name="birth_date">1952-12-05</field>
+    </record>
+    <record id="author_tagore" model="library.author">
+        <field name="name">Rabindranath Tagore</field>
+        <field name="country_id" ref="base.in"/>
+        <field name="birth_date">1861-05-07</field>
+    </record>
+
+    <!-- Books (mix of Draft / Available / Lost for testing) -->
+    <record id="book_1984" model="library.book">
+        <field name="name">1984</field>
+        <field name="author_id" ref="author_orwell"/>
+        <field name="category">fiction</field>
+        <field name="isbn">9780451524935</field>
+        <field name="published_date">1949-06-08</field>
+        <field name="pages">328</field>
+        <field name="price">12.99</field>
+        <field name="copies_total">3</field>
+        <field name="state">available</field>
+        <field name="tag_ids" eval="[Command.set([ref('tag_classic'), ref('tag_bestseller')])]"/>
+    </record>
+    <record id="book_animal_farm" model="library.book">
+        <field name="name">Animal Farm</field>
+        <field name="author_id" ref="author_orwell"/>
+        <field name="category">fiction</field>
+        <field name="isbn">9780451526342</field>
+        <field name="published_date">1945-08-17</field>
+        <field name="pages">112</field>
+        <field name="price">8.99</field>
+        <field name="copies_total">2</field>
+        <field name="state">available</field>
+        <field name="tag_ids" eval="[Command.set([ref('tag_classic')])]"/>
+    </record>
+    <record id="book_homage_catalonia" model="library.book">
+        <field name="name">Homage to Catalonia</field>
+        <field name="author_id" ref="author_orwell"/>
+        <field name="category">history</field>
+        <field name="isbn">9780156421171</field>
+        <field name="published_date">1938-04-25</field>
+        <field name="pages">232</field>
+        <field name="price">14.5</field>
+        <field name="copies_total">1</field>
+        <field name="state">draft</field>
+    </record>
+    <record id="book_pride_prejudice" model="library.book">
+        <field name="name">Pride and Prejudice</field>
+        <field name="author_id" ref="author_austen"/>
+        <field name="category">fiction</field>
+        <field name="isbn">9780141439518</field>
+        <field name="published_date">1813-01-28</field>
+        <field name="pages">432</field>
+        <field name="price">9.99</field>
+        <field name="copies_total">4</field>
+        <field name="state">available</field>
+        <field name="tag_ids" eval="[Command.set([ref('tag_classic'), ref('tag_bestseller')])]"/>
+    </record>
+    <record id="book_emma" model="library.book">
+        <field name="name">Emma</field>
+        <field name="author_id" ref="author_austen"/>
+        <field name="category">fiction</field>
+        <field name="isbn">9780141439587</field>
+        <field name="published_date">1815-12-23</field>
+        <field name="pages">474</field>
+        <field name="price">10.5</field>
+        <field name="copies_total">2</field>
+        <field name="state">draft</field>
+        <field name="tag_ids" eval="[Command.set([ref('tag_classic')])]"/>
+    </record>
+    <record id="book_sense_sensibility" model="library.book">
+        <field name="name">Sense and Sensibility</field>
+        <field name="author_id" ref="author_austen"/>
+        <field name="category">fiction</field>
+        <field name="isbn">9780141439662</field>
+        <field name="published_date">1811-10-30</field>
+        <field name="pages">409</field>
+        <field name="price">9.5</field>
+        <field name="copies_total">1</field>
+        <field name="state">lost</field>
+        <field name="tag_ids" eval="[Command.set([ref('tag_classic')])]"/>
+    </record>
+    <record id="book_brief_history_time" model="library.book">
+        <field name="name">A Brief History of Time</field>
+        <field name="author_id" ref="author_hawking"/>
+        <field name="category">science</field>
+        <field name="isbn">9780553380163</field>
+        <field name="published_date">1988-04-01</field>
+        <field name="pages">212</field>
+        <field name="price">18.0</field>
+        <field name="copies_total">3</field>
+        <field name="state">available</field>
+        <field name="tag_ids" eval="[Command.set([ref('tag_bestseller')])]"/>
+    </record>
+    <record id="book_universe_nutshell" model="library.book">
+        <field name="name">The Universe in a Nutshell</field>
+        <field name="author_id" ref="author_hawking"/>
+        <field name="category">science</field>
+        <field name="isbn">9780553802023</field>
+        <field name="published_date">2001-11-06</field>
+        <field name="pages">224</field>
+        <field name="price">22.0</field>
+        <field name="copies_total">1</field>
+        <field name="state">draft</field>
+    </record>
+    <record id="book_grand_design" model="library.book">
+        <field name="name">The Grand Design</field>
+        <field name="author_id" ref="author_hawking"/>
+        <field name="category">science</field>
+        <field name="isbn">9780553805376</field>
+        <field name="published_date">2010-09-07</field>
+        <field name="pages">208</field>
+        <field name="price">20.0</field>
+        <field name="copies_total">2</field>
+        <field name="state">available</field>
+    </record>
+    <record id="book_sapiens" model="library.book">
+        <field name="name">Sapiens</field>
+        <field name="author_id" ref="author_harari"/>
+        <field name="category">history</field>
+        <field name="isbn">9780062316097</field>
+        <field name="published_date">2011-01-01</field>
+        <field name="pages">464</field>
+        <field name="price">24.99</field>
+        <field name="copies_total">5</field>
+        <field name="state">available</field>
+        <field name="tag_ids" eval="[Command.set([ref('tag_bestseller')])]"/>
+    </record>
+    <record id="book_homo_deus" model="library.book">
+        <field name="name">Homo Deus</field>
+        <field name="author_id" ref="author_harari"/>
+        <field name="category">history</field>
+        <field name="isbn">9780062464316</field>
+        <field name="published_date">2015-01-01</field>
+        <field name="pages">464</field>
+        <field name="price">23.99</field>
+        <field name="copies_total">2</field>
+        <field name="state">draft</field>
+        <field name="tag_ids" eval="[Command.set([ref('tag_bestseller')])]"/>
+    </record>
+    <record id="book_21_lessons" model="library.book">
+        <field name="name">21 Lessons for the 21st Century</field>
+        <field name="author_id" ref="author_harari"/>
+        <field name="category">history</field>
+        <field name="isbn">9780525512172</field>
+        <field name="published_date">2018-08-30</field>
+        <field name="pages">400</field>
+        <field name="price">19.99</field>
+        <field name="copies_total">1</field>
+        <field name="state">lost</field>
+    </record>
+    <record id="book_clean_code" model="library.book">
+        <field name="name">Clean Code</field>
+        <field name="author_id" ref="author_martin"/>
+        <field name="category">tech</field>
+        <field name="isbn">9780132350884</field>
+        <field name="published_date">2008-08-01</field>
+        <field name="pages">464</field>
+        <field name="price">39.99</field>
+        <field name="copies_total">4</field>
+        <field name="state">available</field>
+        <field name="tag_ids" eval="[Command.set([ref('tag_programming'), ref('tag_bestseller')])]"/>
+    </record>
+    <record id="book_clean_architecture" model="library.book">
+        <field name="name">Clean Architecture</field>
+        <field name="author_id" ref="author_martin"/>
+        <field name="category">tech</field>
+        <field name="isbn">9780134494166</field>
+        <field name="published_date">2017-09-20</field>
+        <field name="pages">432</field>
+        <field name="price">34.99</field>
+        <field name="copies_total">2</field>
+        <field name="state">available</field>
+        <field name="tag_ids" eval="[Command.set([ref('tag_programming')])]"/>
+    </record>
+    <record id="book_clean_coder" model="library.book">
+        <field name="name">The Clean Coder</field>
+        <field name="author_id" ref="author_martin"/>
+        <field name="category">tech</field>
+        <field name="isbn">9780137081073</field>
+        <field name="published_date">2011-05-13</field>
+        <field name="pages">256</field>
+        <field name="price">29.99</field>
+        <field name="copies_total">1</field>
+        <field name="state">draft</field>
+        <field name="tag_ids" eval="[Command.set([ref('tag_programming')])]"/>
+    </record>
+    <record id="book_agile_principles" model="library.book">
+        <field name="name">Agile Software Development</field>
+        <field name="author_id" ref="author_martin"/>
+        <field name="category">tech</field>
+        <field name="isbn">9780135974445</field>
+        <field name="published_date">2002-10-15</field>
+        <field name="pages">552</field>
+        <field name="price">54.99</field>
+        <field name="copies_total">1</field>
+        <field name="state">draft</field>
+        <field name="tag_ids" eval="[Command.set([ref('tag_programming')])]"/>
+    </record>
+    <record id="book_gitanjali" model="library.book">
+        <field name="name">Gitanjali</field>
+        <field name="author_id" ref="author_tagore"/>
+        <field name="category">fiction</field>
+        <field name="isbn">9788171670407</field>
+        <field name="published_date">1910-08-14</field>
+        <field name="pages">104</field>
+        <field name="price">7.99</field>
+        <field name="copies_total">3</field>
+        <field name="state">available</field>
+        <field name="tag_ids" eval="[Command.set([ref('tag_classic')])]"/>
+    </record>
+    <record id="book_home_world" model="library.book">
+        <field name="name">The Home and the World</field>
+        <field name="author_id" ref="author_tagore"/>
+        <field name="category">fiction</field>
+        <field name="isbn">9780140449860</field>
+        <field name="published_date">1916-01-01</field>
+        <field name="pages">240</field>
+        <field name="price">11.99</field>
+        <field name="copies_total">2</field>
+        <field name="state">draft</field>
+        <field name="tag_ids" eval="[Command.set([ref('tag_classic')])]"/>
+    </record>
+    <record id="book_gora" model="library.book">
+        <field name="name">Gora</field>
+        <field name="author_id" ref="author_tagore"/>
+        <field name="category">fiction</field>
+        <field name="isbn">9788126000945</field>
+        <field name="published_date">1910-01-01</field>
+        <field name="pages">480</field>
+        <field name="price">13.5</field>
+        <field name="copies_total">1</field>
+        <field name="state">available</field>
+    </record>
+    <record id="book_nationalism" model="library.book">
+        <field name="name">Nationalism</field>
+        <field name="author_id" ref="author_tagore"/>
+        <field name="category">history</field>
+        <field name="isbn">9780143064688</field>
+        <field name="published_date">1917-01-01</field>
+        <field name="pages">128</field>
+        <field name="price">6.99</field>
+        <field name="copies_total">1</field>
+        <field name="state">lost</field>
+    </record>
+
+</odoo>

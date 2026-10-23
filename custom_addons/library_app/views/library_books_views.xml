@@ -37,13 +37,13 @@
         <field name="arch" type="xml">
             <form string="Book">
                 <header>
-                    <button name="action_make_available" strin="Make Available" type="object" class="btn-primary"
+                    <button name="action_make_available" string="Make Available" type="object" class="btn-primary"
                             invisible="state !='draft'"/>
 
-                    <button name="action_mark_lost" strin="Mark As a Lost" type="object"
+                    <button name="action_mark_lost" string="Mark As Lost" type="object"
                             invisible="state =='lost'" confirm="Are You Sure?"/>
 
-                    <field name="state" widget="statusbar" statusbar_visible="draft,available"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,available,lost"/>
 
                 </header>
 
@@ -70,7 +70,7 @@
                             <field name="author_id"/>
                             <field name="isbn"/>
                             <field name="category"/>
-                            <field name="tag_ids" widget="many2many_tags" optional="{'color_field':color}"/>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                         </group>
                     </group>
 
