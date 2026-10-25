@@ -142,7 +142,12 @@
                                         transform: rotate(45deg); z-index: 2;
                                         text-align: center;">
 
-                                <span t-if="record.price.raw_value &lt; 300"
+                                <span t-if="record.price.raw_value &lt;= 0"
+                                    class="d-block bg-warning text-dark fw-bold py-1">
+                                    <field name="price" widget="monetary"/>
+                                </span>
+
+                                <span t-elif="record.price.raw_value &lt; 300"
                                     class="d-block bg-success text-white fw-bold py-1">
                                     <field name="price" widget="monetary"/>
                                 </span>
