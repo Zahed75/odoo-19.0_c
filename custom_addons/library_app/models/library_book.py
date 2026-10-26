@@ -78,3 +78,6 @@ class LibraryBook(models.Model):
             "domain": [("book_id", "=", self.id)],
             "context": {"default_book_id": self.id},
         }
+
+
+

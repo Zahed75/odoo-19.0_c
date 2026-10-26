@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="library_loan_view_list" model="ir.ui.view">
+        <field name="name">library.loan.list</field>
+        <field name="model">library.loan</field>
+        <field name="arch" type="xml">
+        </field>
+    </record>
+
+    <list decoration-danger="state=='late'" decoration-muted ="state=='returned'">
+
+    </list>
+</odoo>
