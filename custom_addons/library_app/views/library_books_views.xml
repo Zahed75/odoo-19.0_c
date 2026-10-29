@@ -179,7 +179,9 @@
                 </group>
 
                 <!--         Task       -->
+                <filter name="group_tag_ids" string="Tag Id" context="{'group_by':'tag_ids'}"/>
                 <!--            Loan/Lost filter    -->
+                <filter name="filter_lost" string="Lost" domain="[('state','=','lost')]"/>
 
 
             </search>
