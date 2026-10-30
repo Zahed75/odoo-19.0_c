@@ -149,11 +149,73 @@
 
     <!--  Search View  -->
 
+    <record id="library_book_view_search" model="ir.ui.view">
+        <field name="name">library.book.search</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <!-- search -->
+            <search>
+                <!-- what the user input into search bos -->
+                <field name="name"/>
+                <field name="isbn"/>
+                <field name="author_id"/>
+                <field name="tag_ids"/>
+                <filter name="filter_available" string="Available"
+                    domain="[('state','=','available')]"
+                />
+                <filter name="filter_out_of_stock" string="Out of Stock"
+                    domain="[('copies_available','=',0)]"
+                />
+                <separator />
+
+                <filter name="filter_archived" string="Archived"
+                    domain="[('active','=',False)]"
+                />
+                <filter name="filter_lost" string="Lost"
+                        domain="[('state','=','lost')]"
+                />
+                <!--group wise filter-->
+                <group>
+                    <filter name="group_author" string="Author"
+                    context="{'group_by':'author_id'}"
+                    />
+                    <filter name="group_category" string="Category"
+                            context="{'group_by':'category'}"
+                    />
+                    <filter name="group_state" string="Status"
+                            context="{'group_by':'state'}"
+                    />
+
+                </group>
+
+            </search>
+        </field>
+    </record>
 
     <!--    Pivot View-->
-
+    <record id="library_book_view_pivot" model="ir.ui.view">
+        <field name="name">library.book.pivot</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <pivot string="Books Analysis">
+                <field name="category" type="row"/>
+                <field name="state" type="column"/>
+                <field name="copies_total" type="measure"/>
+            </pivot>
+        </field>
+    </record>
 
     <!--    Graph View -->
+    <record id="library_book_view_graph" model="ir.ui.view">
+        <field name="name">library.book.graph</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <graph string=" Library Book Graph" type="bar">
+                <field name="category"/>
+                <field name="copies_total" type="measure"/>
+            </graph>
+        </field>
+    </record>
 
 
     <!--  Action View  -->
@@ -162,7 +224,7 @@
     <record id="library_book_action" model="ir.actions.act_window">
         <field name="name">Books</field>
         <field name="res_model">library.book</field>
-        <field name="view_mode">kanban,list,form</field>
+        <field name="view_mode">kanban,list,form,pivot,graph</field>
         <field name="context">{'search_default_filter_availabe':1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">Add your first book</p>

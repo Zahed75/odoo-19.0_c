@@ -13,6 +13,7 @@
         "views/library_tag_views.xml",
         "views/library_author_views.xml",
         "views/library_books_views.xml",
+        "views/library_loans_views.xml",
         "views/library_menus.xml",
         "data/library_book_data.xml",
     ],
