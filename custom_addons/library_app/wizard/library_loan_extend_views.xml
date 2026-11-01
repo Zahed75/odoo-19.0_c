@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="library_loan_extend_view_form" model="ir.ui.view">
+        <field name="name">library.loan.extend.wizard.form</field>
+        <field name="model">library.loan.extend.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Extend Loan">
+                <group>
+                    <field name="loan_id" readonly="1"/>
+                    <field name="extra_days"/>
+                    <field name="reason" placeholder="Optional reason"/>
+                </group>
+                <footer>
+                    <button name="action_extend" type="object" string="Extend Loan"
+                            class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="library_loan_extend_action" model="ir.actions.act_window">
+        <field name="name">Extend Loan</field>
+        <field name="res_model">library.loan.extend.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

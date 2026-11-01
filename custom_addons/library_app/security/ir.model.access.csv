@@ -7,3 +7,4 @@ access_book_user,library.book user,model_library_book,group_library_user,1,0,0,0
 access_book_manager,library.book manager,model_library_book,group_library_manager,1,1,1,1
 access_loan_user,library.loan user,model_library_loan,group_library_user,1,1,1,0
 access_loan_manager,library.loan manager,model_library_loan,group_library_manager,1,1,1,1
+access_loan_extend_user,library.loan.extend.wizard user,model_library_loan_extend_wizard,group_library_user,1,1,1,0

@@ -34,7 +34,7 @@
 
     <!-- Circulation -->
     <menuitem id="library_menu_loans" name="Loans"
-              parent="library_menu_circulation" action="action_coming_soon_url" sequence="10"/>
+              parent="library_menu_circulation" action="library_loan_action" sequence="10"/>
     <menuitem id="library_menu_members" name="Members"
               parent="library_menu_circulation" action="action_coming_soon_url" sequence="20"/>
 

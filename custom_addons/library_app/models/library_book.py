@@ -5,13 +5,13 @@ from odoo.exceptions import ValidationError
 class LibraryBook(models.Model):
     _name = "library.book"
     _description = "Library Book"
-    _inherit = ["mail.thread", "mail.activity.mixin"]  # chatter + activities
+    _inherit = ["mail.thread", "mail.activity.mixin"]   # chatter + activities
     _order = "name"
 
     # --- basic fields -------------------------------------------------
     name = fields.Char(string="Title", required=True, tracking=True)
     isbn = fields.Char(string="ISBN", copy=False)
-    active = fields.Boolean(default=True)  # enables Archive
+    active = fields.Boolean(default=True)               # enables Archive
     cover = fields.Image(max_width=512, max_height=512)
     description = fields.Html()
     published_date = fields.Date()
@@ -78,6 +78,3 @@ class LibraryBook(models.Model):
             "domain": [("book_id", "=", self.id)],
             "context": {"default_book_id": self.id},
         }
-
-
-

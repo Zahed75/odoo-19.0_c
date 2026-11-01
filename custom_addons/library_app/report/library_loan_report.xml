@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_library_loan" model="ir.actions.report">
+        <field name="name">Loan Slip</field>
+        <field name="model">library.loan</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">library_app.report_library_loan_document</field>
+        <field name="report_file">library_app.report_library_loan_document</field>
+        <field name="print_report_name">'Loan Slip - %s' % (object.name)</field>
+    </record>
+
+    <template id="report_library_loan_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Loan Slip <t t-esc="o.name"/></h2>
+                        <table class="table table-sm">
+                            <tbody>
+                                <tr>
+                                    <th>Book</th>
+                                    <td><t t-esc="o.book_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <th>Member</th>
+                                    <td><t t-esc="o.member_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <th>Loan Date</th>
+                                    <td><span t-field="o.loan_date"/></td>
+                                </tr>
+                                <tr>
+                                    <th>Due Date</th>
+                                    <td><span t-field="o.due_date"/></td>
+                                </tr>
+                                <tr t-if="o.return_date">
+                                    <th>Return Date</th>
+                                    <td><span t-field="o.return_date"/></td>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <td><span t-field="o.state"/></td>
+                                </tr>
+                                <tr>
+                                    <th>Fine</th>
+                                    <td><span t-field="o.fine_amount"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

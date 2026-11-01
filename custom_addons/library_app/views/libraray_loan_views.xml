@@ -4,10 +4,98 @@
         <field name="name">library.loan.list</field>
         <field name="model">library.loan</field>
         <field name="arch" type="xml">
+            <list decoration-danger="state == 'late'" decoration-muted="state == 'returned'">
+                <field name="name" />
+                <field name="book_id" />
+                <field name="member_id" />
+                <field name="loan_date" />
+                <field name="due_date" />
+                <field name="fine_amount" sum="Total fines" />
+                <field name="currency_id" column_invisible="True" />
+                <field name="state" widget="badge"
+                    decoration-info="state == 'borrowed'"
+                    decoration-danger="state == 'late'"
+                    decoration-success="state == 'returned'" />
+            </list>
         </field>
     </record>
 
-    <list decoration-danger="state=='late'" decoration-muted ="state=='returned'">
 
-    </list>
+    <!-- form VIEW -->
+
+    <record id="library_loan_view_form" model="ir.ui.view">
+        <field name="name">library.loan.form </field>
+        <field name="model">library.loan</field>
+        <field name="arch" type="xml">
+
+            <form string="Loan">
+                <header>
+                    <button name="action_borrow" type="object" string="Confirm Borrow"
+                        class="btn-primary" invisible="state !='draft'" />
+
+                    <button name="action_return" type="object" string="Return Book"
+                        class="btn-primary" invisible="state not in ('borrowed','late') " />
+
+
+                    <!-- type="actions=": opens another action by its XML ID -->
+
+                    <button name="%(library_loan_extend_action)d" type="action"
+                        string="Extend" invisible="state not in ('borrowed','late')"
+                        context="{'default_loan_id':id}"
+                    />
+
+                    <button name="%(action_report_library_loan)d" type="action"
+                        string="Print Slip" invisible="state == 'draft'"
+                    />
+
+                    <field name="state" widget="statusbard"
+                        statusbar_visible="draft,borrowed,returned" />
+
+                </header>
+
+                <sheet>
+                    
+                    <div class="oe_title">
+                        <h1><field name="name" /></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="book_id" readonly="state != 'draft'" options="{'no_create':True}" />
+                            <field name="member_id" readonly="state !='draft'"/>
+                        </group>
+
+                        <group>
+                            <field name="loan_date" readonly="state != 'draft'"/>
+                            <field name="due_date"/>
+                            <field name="return_date" invisible="not return_date"/>
+                            <field name="fine_amount" invisible="fine_amount==0"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <field name="notes" placeholder="Internal Notes......." />
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+
+    </record>
+
+
+    <!-- Home Task Search View -->
+     <!-- name,book_id,state filter_loan_date,groupby member_id>GroupByMonth -->
+
+
+    <record id="library_loan_action" model="ir.actions.act_window">
+        <field name="name">Loans</field>
+        <field name="res_model">library.loan</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Same model, different action: opens straight into analysis views -->
+    <record id="library_loan_analysis_action" model="ir.actions.act_window">
+        <field name="name">Loan Analysis</field>
+        <field name="res_model">library.loan</field>
+        <field name="view_mode">pivot,graph,list</field>
+        <field name="context">{'search_default_group_state': 1}</field>
+    </record>
 </odoo>
