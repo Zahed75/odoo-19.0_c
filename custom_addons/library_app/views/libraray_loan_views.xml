@@ -86,6 +86,29 @@
 
     <!-- Home Task Search View -->
     <!-- name,book_id,state filter_loan_date,groupby member_id>GroupByMonth -->
+    <record id="library_loan_view_search" model="ir.ui.view">
+        <field name="name">library.loan.search</field>
+        <field name="model">library.loan</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="book_id"/>
+                <field name="member_id"/>
+                <field name="state"/>
+
+                <filter name="filter_borrowed" string="Borrowed" domain="[('state', '=', 'borrowed')]"/>
+                <filter name="filter_late" string="Late" domain="[('state', '=', 'late')]"/>
+                <separator/>
+                <filter name="filter_loan_date" string="Loan Date" date="loan_date"/>
+
+                <group>
+                    <filter name="group_member" string="Member" context="{'group_by': 'member_id'}"/>
+                    <filter name="group_state" string="Status" context="{'group_by': 'state'}"/>
+                    <filter name="group_month" string="Month" context="{'group_by': 'loan_date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
 
 
     <!-- Calandar View -->
