@@ -45,6 +45,10 @@
                                     <th>Fine</th>
                                     <td><span t-field="o.fine_amount"/></td>
                                 </tr>
+                                <tr>
+                                    <th>Notes</th>
+                                    <td><span t-field="o.notes"/></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
